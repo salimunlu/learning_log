@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .forms import TopicForm
+from .forms import TopicForm, EntryForm
 from .models import Topic
 
 
@@ -35,3 +35,23 @@ def new_topic(request):
             return redirect('learning_logs:topics')
     context = {'form': form}
     return render(request, 'learning_logs/new_topic.html', context)
+
+
+def new_entry(request, topic_id):
+    """Add a new entry."""
+    topic = Topic.objects.get(id=topic_id)   # URL'den gelen topic_id'yi kullanarak ilgili konu alınır
+    # HTTP isteği türüne (GET, POST) göre işlem yapıyoruz.
+    if request.method != 'POST':
+        # Veri gönderilmediyse boş form oluştur
+        form = EntryForm()
+    else:
+        # POST verisi gönderildiyse, veriyi işle.
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            # Form geçerli ise veritabanına kaydetmeden önce entry nesnesinin topic özelliğini ayarla
+            new_entry = form.save(commit=False)
+            new_entry.topic = topic
+            new_entry.save()
+            return redirect('learning_logs:topic', topic_id=topic_id)
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning_logs/new_entry.html', context)
