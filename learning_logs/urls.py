@@ -10,4 +10,5 @@ urlpatterns = [
     path('topics/<int:topic_id>/', views.topic, name='topic'), # Konuların ayrı sayfaları
     path('new_topic/', views.new_topic, name='new_topic'), # Yeni konu eklemek için
     path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'), # Yeni entry eklemek için
+    path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'), # Entry düzenlemek için
 ]
