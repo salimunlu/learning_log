@@ -1,0 +1,55 @@
+/* Set background styles for the entire page */
+body {
+    background-image: url('/static/images/bg_image2.png'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: navy;
+    font-family: Arial, sans-serif; /* Choose your preferred font */
+    margin: 0; /* Remove default margin for a cleaner look */
+    padding: 0; /* Remove default padding */
+}
+
+/* Style the list group items */
+.list-group-item {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white; /* Text color for list items */
+    font-weight: bold; /* Make text bold */
+    padding: 10px 15px; /* Add some padding for better spacing */
+    margin: 5px 0; /* Add margin to separate list items */
+}
+
+/* Style the "Add new topic" button */
+.btn-info {
+    background-color: #007BFF; /* Change the button color */
+    color: white; /* Text color for the button */
+    font-weight: bold; /* Make button text bold */
+    border: none; /* Remove button border */
+    padding: 10px 15px; /* Add padding to the button */
+    margin-top: 10px; /* Add margin to space it from the list */
+}
+
+/* Style the "No topics have been added yet" message */
+h3 {
+    color: navy; /* Text color for the message */
+    text-align: center; /* Center-align the message */
+    margin-top: 20px; /* Add margin to center it vertically */
+}
+
+/* Style links within list group items */
+.list-group-item a {
+    color: #FF4081; /* Change link color within list items */
+    text-decoration: none; /* Remove underline from links */
+    margin-left: 10px; /* Add margin to separate links */
+}
+
+/* Hover effect for links within list group items */
+.list-group-item a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Customize the background color for the "Add new topic" button on hover */
+.btn-info:hover {
+    background-color: #0056b3; /* Change button color on hover */
+}
