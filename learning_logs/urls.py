@@ -13,4 +13,5 @@ urlpatterns = [
     path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'), # Entry düzenlemek için
     path('delete_entry/<int:entry_id>/', views.delete_entry, name='delete_entry'), # Entry silmek için
     path('delete_topic/<int:topic_id>/', views.delete_topic, name='delete_topic'), # Topic silmek için
+    path('about/', views.about, name='about'),
 ]

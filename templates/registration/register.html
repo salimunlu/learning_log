@@ -1,16 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
 {% extends "learning_logs/base.html" %}
 
 {% block content %}
 
-    <form method="post" action="{% url 'users:register' %}">
+    {% if user.is_authenticated %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">You have been already registered. Go to Topics page!</h4>
+        </div>
+    {% else %}
 
+  <h2 class="mb-3">Register</h2>
+
+      <form method="post" action="{% url 'users:register' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-
-        <button name="submit">Register</button>
-        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}">
-
-    </form>
-
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" class="form-control" id="username" required>
+            <small id="usernameHelp" class="form-text text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+        </div>
+        <div class="form-group">
+            <label for="password1">Password:</label>
+            <input type="password" name="password1" class="form-control" id="password1" required>
+            <small id="passwordHelp" class="form-text text-muted">Your password can’t be too similar to your other personal information.
+    Your password must contain at least 8 characters.
+    Your password can’t be a commonly used password.
+    Your password can’t be entirely numeric.</small>
+        </div>
+        <div class="form-group">
+            <label for="password2">Password confirmation:</label>
+            <input type="password" name="password2" class="form-control" id="password2" required>
+            <small id="password2Help" class="form-text text-muted">Enter the same password as before, for verification.</small>
+        </div>
+        <button name="submit" class="btn btn-primary">Register</button>
+        <input type="hidden" name="text" value="{% url 'learning_logs:index' %}"/>
+      </form>
+    {% endif %}
 {% endblock content %}
 
+</body>
+</html>
