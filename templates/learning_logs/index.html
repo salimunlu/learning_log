@@ -6,9 +6,12 @@
 {% endblock page_header %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <div class="p-3 mb-4 bg-info border rounded-3">
         <div class="container-fluid py-4">
             <h2 class="display-3">Welcome to Learning Log</h2>
+            <img src="{% static 'images/girl_writer.png' %}" alt="Girl writing"
+             class="img-fluid rounded mb-4" width="300" height="300">
             <p class="lead">Track your learning journey with Learning Log. Create your own log and keep a list of the topics you're learning about. Whenever you learn something new, make an entry to summarize what you've learned.</p>
             <p class="lead">Learning Log helps you organize your learning process and track your progress over time. It's the perfect tool for anyone who loves to learn.</p>
             

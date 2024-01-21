@@ -1,27 +1,53 @@
 {% extends 'learning_logs/base.html' %}
 
 {% block page_header %}
-    <h2>{{ topic }}</h2>
+    <h2>{{ topic|upper }}</h2>
+    <a class="btn btn-danger" href="{% url 'learning_logs:delete_topic' topic.id %}">Delete Topic</a>
+    {% if entries|length > 1 %}
+        <p>There are {{ entries|length }} entries in this topic</p>
+    {% endif %}
 {% endblock page_header %}
 
 {% block content %}
-    
-    <h3>Entries:</h3>
-    
-    <p>
-    
-        {% for entry in entries %}
-            <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
-            <p>{{ entry.text | linebreaks }}</p>
-            <p><a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit entry</a></p>
-        {% empty %}
-            There are no entries for this topic yet.
-        {% endfor %}
-    
-    </p>
-    <p>
-        <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
-    </p>
-    
-{% endblock content %}
 
+    <h3>Entries:</h3>
+
+    <p>
+
+        {% for entry in entries %}
+            <div class="card mb-3" style="color: black; background-color: aqua">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="mb-4" style="margin-bottom: 0rem!important; padding-top: 0.5rem;">
+                        <h4>
+                            <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
+                        </h4>
+                    </div>
+                    <div class="mb-4" style="margin-bottom: 0rem!important; padding-top: 0.5rem;">
+                        <h5>
+                            <small><a href="{% url 'learning_logs:edit_entry' entry.id %}" style="color: mediumvioletred">Edit entry</a></small>
+                        </h5>
+                    </div>
+                    <div class="mb-4" style="margin-bottom: 0rem!important; padding-top: 0.5rem;">
+                        <h5>
+                            <small><a href="{% url 'learning_logs:delete_entry' entry.id %}" style="color: mediumvioletred">Delete entry</a></small>
+                        </h5>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+                    <p>{{ entry.text | linebreaks }}</p>
+                </div>
+
+            </div>
+
+
+        {% empty %}
+            <p>There are no entries for this topic yet.</p>
+        {% endfor %}
+    </p>
+    <p>
+        <a class="btn btn-primary" href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+    </p>
+
+{% endblock content %}

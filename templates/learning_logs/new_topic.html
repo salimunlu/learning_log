@@ -1,16 +1,18 @@
 {% extends 'learning_logs/base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
 
 {% block page_header %}
-    <p>Add a new topic:</p>
+    <h2>Add a new topic:</h2>
 {% endblock page_header %}
 
 
 {% block content %}
-    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <form action="{% url 'learning_logs:new_topic' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button name="submit">Add topic</button>
+        <button class="btn btn-secondary" name="submit">Add topic</button>
     </form>
 
 {% endblock content %}
