@@ -53,3 +53,73 @@ h3 {
 .btn-info:hover {
     background-color: #0056b3; /* Change button color on hover */
 }
+
+.header-section {
+    /* This sets the font stack, with 'Segoe UI' being the primary font choice. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Sets the text color for any text within the .header-section class. */
+    color: #333;
+
+    /* Background color of the header section is a light grey. */
+    background-color: #f8f9fa;
+
+    /* Adds a border at the bottom of the header section. */
+    border-bottom: 1px solid #eaecef;
+
+    /* Adds padding inside the header section, which affects all sides. */
+    padding: 20px;
+}
+
+.header-section h2 {
+    /* Sets the font size to 2 rem (relative to the root element's font size). */
+    font-size: 2rem;
+
+    /* Increases the weight (boldness) of the <h2> heading text. */
+    font-weight: 600;
+
+    /* Sets the bottom margin of the <h2> tag to create space below it. */
+    margin-bottom: 10px;
+
+    /* Changes the color of the <h2> heading text to a soft blue. */
+    color: #5b7083;
+}
+
+.header-section .btn-delete {
+    /* Sets the font size of the text within the delete button. */
+    font-size: 1rem;
+
+    /* Adjusts the padding within the button to make it taller and wider. */
+    padding: 10px 15px;
+
+    /* Sets the background color of the button to a shade of red. */
+    background-color: #dc3545;
+
+    /* Sets the text color within the button to white. */
+    color: white;
+
+    /* Removes the border from the button. */
+    border: none;
+
+    /* Rounds the corners of the button. */
+    border-radius: 5px;
+
+    /* Creates a transition effect when the background color changes (on hover). */
+    transition: background-color 0.3s ease;
+}
+
+.header-section .btn-delete:hover {
+    /* Changes the background color of the button when the mouse hovers over it. */
+    background-color: #bd2130;
+}
+
+.header-section p {
+    /* Sets the font size of the paragraph text within the header section. */
+    font-size: 1rem;
+
+    /* Changes the color of the paragraph text to a muted grey. */
+    color: #6c757d;
+
+    /* Sets the top margin of the paragraph to 0. */
+    margin-top: 0;
+}

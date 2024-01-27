@@ -1,53 +1,41 @@
 {% extends 'learning_logs/base.html' %}
 
 {% block page_header %}
+<header class="header-section">
     <h2>{{ topic|upper }}</h2>
-    <a class="btn btn-danger" href="{% url 'learning_logs:delete_topic' topic.id %}">Delete Topic</a>
     {% if entries|length > 1 %}
-        <p>There are {{ entries|length }} entries in this topic</p>
+        <p>There are {{ entries|length }} entries in this topic.</p>
+    {% else %}
+        <p>There is {{ entries|length }} entry in this topic.</p>
     {% endif %}
+    <a class="btn btn-outline-danger btn-sm" href="{% url 'learning_logs:delete_topic' topic.id %}" role="button">
+    Delete Topic
+    </a>
+</header>
 {% endblock page_header %}
 
+
 {% block content %}
-
-    <h3>Entries:</h3>
-
-    <p>
-
+    <section>
+        <h3 class="mb-3">Entries:</h3>
         {% for entry in entries %}
-            <div class="card mb-3" style="color: black; background-color: aqua">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <div class="mb-4" style="margin-bottom: 0rem!important; padding-top: 0.5rem;">
-                        <h4>
-                            <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
-                        </h4>
+            <article class="card mb-3">
+                <header class="card-header d-flex justify-content-between align-items-center">
+                    <time datetime="{{ entry.date_added|date:"c" }}" class="text-muted">{{ entry.date_added|date:"M d, Y H:i" }}</time>
+                    <div>
+                        <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="btn btn-outline-info btn-sm">Edit entry</a>
+                        <a href="{% url 'learning_logs:delete_entry' entry.id %}" class="btn btn-outline-danger btn-sm">Delete entry</a>
                     </div>
-                    <div class="mb-4" style="margin-bottom: 0rem!important; padding-top: 0.5rem;">
-                        <h5>
-                            <small><a href="{% url 'learning_logs:edit_entry' entry.id %}" style="color: mediumvioletred">Edit entry</a></small>
-                        </h5>
-                    </div>
-                    <div class="mb-4" style="margin-bottom: 0rem!important; padding-top: 0.5rem;">
-                        <h5>
-                            <small><a href="{% url 'learning_logs:delete_entry' entry.id %}" style="color: mediumvioletred">Delete entry</a></small>
-                        </h5>
-                    </div>
-
-                </div>
-
+                </header>
                 <div class="card-body">
-                    <p>{{ entry.text | linebreaks }}</p>
+                    <p>{{ entry.text|linebreaks }}</p>
                 </div>
-
-            </div>
-
-
+            </article>
         {% empty %}
             <p>There are no entries for this topic yet.</p>
         {% endfor %}
-    </p>
-    <p>
-        <a class="btn btn-primary" href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
-    </p>
-
+        <div class="mt-4">
+            <a class="btn btn-primary" href="{% url 'learning_logs:new_entry' topic.id %}">Add New Entry</a>
+        </div>
+    </section>
 {% endblock content %}
