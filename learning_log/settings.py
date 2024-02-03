@@ -139,3 +139,6 @@ LOGIN_REDIRECT_URL = 'learning_logs:index'
 LOGOUT_REDIRECT_URL = 'users:logout'
 LOGIN_URL = 'users:login'
 
+# Heroku Settings
+import django_heroku
+django_heroku.settings(locals())
